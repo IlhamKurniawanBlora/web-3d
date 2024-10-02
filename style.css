@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+
+}
+
+body {
+    /* background-image: linear-gradient(to bottom right, #1E3A8A, #071233); */
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Tetap di posisi atas saat scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Supaya header berada di atas elemen lainnya */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 50px;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #E63946;
+    font-size: 1.8em;
+}
+.logo h1 span{
+    color: #ffffff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #E63946;
+}
+
+.quote-btn {
+    background-color: #E63946;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.quote-btn:hover {
+    background-color: #C53030;
+}
+
+main {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding-top: 100px; /* Menambahkan padding agar konten tidak tertutup oleh header */
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 4em;
+    margin: 10px 0;
+}
+.hero h1 span{
+    color: #C53030;
+}
+
+.hero h3 {
+    color: #9CA3AF;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.hire-btn, .cv-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.hire-btn {
+    background-color: #E63946;
+    color: white;
+}
+
+.cv-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.hire-btn:hover {
+    background-color: #C53030;
+}
+
+.cv-btn:hover {
+    background-color: white;
+    color: #1E3A8A;
+}
+
+.hero-image img {
+    width: 400px;
+}
+
+.social-media {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    margin-right: 60px;
+    transform: translateY(-50%);
+}
+
+.social-media ul {
+    list-style: none;
+}
+
+.social-media li {
+    margin-bottom: 20px;
+
+}
+
+.social-media li img {
+    width: 30px;
+    height: 30px;
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Default: Hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Transparent Background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.2); /* Glass Effect */
+    border-radius: 10px;
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Glass Blur Effect */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+#calendar {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    color: white;
+}
+
+#currentDateTime {
+    font-size: 1.2em;
+}
+
+#currentDate, #currentTime {
+    margin: 5px 0;
+}
+
+.modal-content p {
+    font-size: 1.2em;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#progress-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #progress {
+    font-size: 3em;
+    color: white;
+  }
