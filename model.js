@@ -17,7 +17,7 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-camera.position.set(4, 5, 11);
+camera.position.set(6, 2, 3);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -42,10 +42,12 @@ groundMesh.receiveShadow = true;
 scene.add(groundMesh);
 
 const spotLight = new THREE.SpotLight(0xffffff, 3000, 100, 0.22, 1);
-spotLight.position.set(0, 25, 0);
+spotLight.position.set(0, 25, 3);
 spotLight.castShadow = true;
 spotLight.shadow.bias = -0.0001;
 scene.add(spotLight);
+
+let pivot; // Variable to store the pivot group
 
 const loader = new GLTFLoader().setPath('public/stylized_mushrooms/');
 loader.load('scene.gltf', (gltf) => {
@@ -59,8 +61,17 @@ loader.load('scene.gltf', (gltf) => {
     }
   });
 
-  mesh.position.set(0, 1.05, -1);
-  scene.add(mesh);
+  // Create a group (pivot point)
+  pivot = new THREE.Group();
+  
+  // Set the model's position within the group (shift it to the side)
+  mesh.position.set(2, 0.5, 0); // Shift object 2 units along the X-axis (adjust this value as needed)
+  
+  // Add the model to the group
+  pivot.add(mesh);
+  
+  // Add the group to the scene
+  scene.add(pivot);
 
   document.getElementById('progress-container').style.display = 'none';
 }, (xhr) => {
@@ -77,6 +88,12 @@ window.addEventListener('resize', () => {
 
 function animate() {
   requestAnimationFrame(animate);
+  
+  // Rotate the pivot group, which will rotate the model around the shifted pivot point
+  if (pivot) {
+    pivot.rotation.y += 0.005; // Rotate around the Y-axis (adjust rotation speed if needed)
+  }
+  
   controls.update();
   renderer.render(scene, camera);
 }
